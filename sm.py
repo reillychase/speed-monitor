@@ -53,7 +53,7 @@ def test():
     #try to tweet if speedtest couldnt even connect. Probably wont work if the internet is down
     if "Cannot" in a:
         try:
-            tweet="Hey @Comcast @ComcastCares why is my internet down? I pay for 75down\\10up in Valparaiso IN? #comcastoutage #comcast"
+            tweet="Hey @Comcast @ComcastCares why is my internet down? I pay for 75down/10up in Valparaiso IN? #comcastoutage #comcast"
             twit.statuses.update(status=tweet)
         except:
             pass
@@ -63,7 +63,7 @@ def test():
         print "trying to tweet"
         try:
             # i know there must be a better way than to do (str(int(eval())))
-            tweet="Hey @Comcast why is my internet speed " + str(int(eval(d))) + "down\\" + str(int(eval(u))) + "up when I pay for 75down\\10up in Valparaiso IN? @ComcastCares @xfinity #comcast #speedtest"                        
+            tweet="Hey @Comcast why is my internet speed " + str(int(eval(d))) + "down/" + str(int(eval(u))) + "up when I pay for 75down/10up in Valparaiso IN? @ComcastCares @xfinity #comcast"                        
             twit.statuses.update(status=tweet)
         except Exception,e:
             print str(e)
