@@ -191,7 +191,7 @@ $business_stats = json_encode($business_stats);
 
 
 try {
-$dbh = new PDO("mysql:dbname=$nameofdb;host=localhost", $dbusername, $dbpassword);
+$dbh = new PDO("mysql:dbname=$nameofdb;host=$host", $dbusername, $dbpassword);
 $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } 
 
