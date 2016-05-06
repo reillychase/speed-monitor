@@ -6,16 +6,16 @@ import datetime
 import time
 import twitter
 import MySQLdb
+import re
 from sm_config import *
 
 def test():
 
     #run speedtest-cli
     print 'running test'
-    a = os.popen("python /usr/bin/speedtest-cli --simple").read()
+    a = os.popen("python /usr/bin/speedtest-cli --share --simple").read()
     print 'ran'
     #split the 3 line result (ping,down,up)
-    lines = a.split('\n')
     print a
     #if speedtest could not connect set the speeds to 0
     if "Cannot" in a:
@@ -24,9 +24,10 @@ def test():
         u = 0
     #extract the values for ping down and up values
     else:
-        p = lines[0][6:11]
-        d = lines[1][10:14]
-        u = lines[2][8:12]
+        p = re.findall('Ping: (.+?) ', a)[0]
+        d = re.findall('Download: (.+?) ', a)[0]
+        u = re.findall('Upload: (.+?) ', a)[0]
+        ss = re.findall('Share results: (.+?) ', a)[0]
 
     # Open database connection
     db = MySQLdb.connect(host,db_user,db_pass,db_name)
@@ -36,7 +37,7 @@ def test():
 
     try:
         # Execute the SQL command
-        cursor.execute("INSERT INTO residential (time,d,u,p) VALUES (NOW(),%s,%s,%s)", (d,u,p))
+        cursor.execute("INSERT INTO residential (time,d,u,p,ss) VALUES (NOW(),%s,%s,%s,%s)", (d,u,p,ss))
         # Commit your changes in the database
         db.commit()
     except Exception,e:
