@@ -27,7 +27,7 @@ def test():
         p = re.findall('Ping: (.+?) ', a)[0]
         d = re.findall('Download: (.+?) ', a)[0]
         u = re.findall('Upload: (.+?) ', a)[0]
-        ss = re.findall('Share results: (.+?) ', a)[0]
+        ss = re.findall('Share results: (.+)', a)[0]
 
     # Open database connection
     db = MySQLdb.connect(host,db_user,db_pass,db_name)
