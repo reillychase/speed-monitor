@@ -365,7 +365,7 @@ function drawVisualization() {
             series: {
 
               0: {type: "line", targetAxisIndex:0},
-              1: {type: "line", targetAxisIndex:1},
+              1: {type: "line", targetAxisIndex:0},
               2: {side: 'right', type: "bar", targetAxisIndex:0}, // Right y-axis.
 
             },
