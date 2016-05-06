@@ -1,4 +1,5 @@
   <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -10,6 +11,78 @@
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
+<style>
+
+/* Copyright 2012 Google Inc. All Rights Reserved. */
+
+.google-visualization-tooltip-action: hover {
+  background-color: #eeeeee;
+}
+.google-visualization-tooltip {
+  border:solid 1px #bdbdbd;
+  border-radius: 2px;
+  background-color: white;
+  position: absolute;
+  box-shadow: 0px 2px 2px 0px rgba(204, 204, 204, 0.6);
+  font-size: 12px;
+  padding: 0px;
+  -moz-box-shadow: 0px 2px 2px 0px rgba(204, 204, 204, 0.6);
+  -webkit-box-shadow: 0px 2px 2px 0px rgba(204, 204, 204, 0.6);
+  width: 325px !important;
+  height: 200px !important;
+}
+.google-visualization-tooltip-action-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0.5em 0em 0.5em 0em;
+  cursor: hand;
+}
+.google-visualization-tooltip-action {
+  margin: 0;
+  cursor: pointer;
+  padding: 0.5em 2em 0.5em 1em;
+}
+.google-visualization-tooltip-action:hover {
+  background-color: #eeeeee;
+}
+.google-visualization-tooltip-item-list {
+  list-style-type: none;
+  margin: 1em 0 1em 0;
+  padding: 0em;
+}
+.google-visualization-tooltip-item {
+  margin: 0.65em 0em 0.65em 0em;
+  padding: 0em 2em 0em 1em;
+}
+.google-visualization-tooltip-item-list
+.google-visualization-tooltip-item:first-child {
+  margin: 1em 0em 1em 0em;
+}
+.google-visualization-tooltip-separator {
+  margin: 0;
+  padding: 0;
+  height: 1px;
+  background-color: #dddddd;
+}
+.google-visualization-tooltip-square {
+  display: inline-block;
+  /* IE does not support inline-block fall back to float left */
+  float: left\9;
+  clear: none;
+  width: 0.5em;
+  height: 0.5em;
+  margin: 0.16em 0.7em 0em 0em;
+  border-bottom: solid 0.1em white;
+}
+
+/* Hide the other display points from tooltip */
+.google-visualization-tooltip-square { display:none !important;}
+.google-visualization-tooltip-item span:nth-child(2) { display:none !important; height: 0px !important}
+.google-visualization-tooltip-item span:nth-child(3) { display:none;}
+
+
+
+    </style>
 <body>
   <nav class="light-blue lighten-1" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="index.html" class="brand-logo">rchase.com</a>
@@ -31,7 +104,7 @@
         <h5 class="header col s12 light">An Open Source Internet Speed Analysis Tool</h5>
       </div>
       <div class="row center">
-        <a href="#" id="download-button" class="btn-large waves-effect waves-light orange">View on Github</a>
+        <a href="https://github.com/reillychase/speedmonitor" id="download-button" class="btn-large waves-effect waves-light orange" target="_blank">View on Github</a>
       </div>
       <br><br>
 
@@ -46,7 +119,7 @@
       <div class="row">
         <div class="col s12 m4">
           <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="material-icons">timeline</i></h2>
+            <h2 class="center light-blue-text"><i class="medium material-icons">timeline</i></h2>
             <h5 class="center">Analytics Dashboard</h5>
 
             <p class="light">Responsive and easy to use Analytics Dashboard with charting of internet speeds. Built with Google Charts API and includes Range Filter control for selecting any time frame.</p>
@@ -55,7 +128,7 @@
 
         <div class="col s12 m4">
           <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="material-icons">visibility</i></h2>
+            <h2 class="center light-blue-text"><i class="medium material-icons">visibility</i></h2>
             <h5 class="center">Network Visibility</h5>
 
             <p class="light">Gain deeper insight to network speeds, correlate network problems with the internet speeds at the time, bring awareness to any patterns in network degradation, and notify the right people when speeds are below threshold.</p>
@@ -64,7 +137,7 @@
 
         <div class="col s12 m4">
           <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="material-icons">mail_outline</i></h2>
+            <h2 class="center light-blue-text"><i class="medium material-icons">mail_outline</i></h2>
             <h5 class="center">Automatic Notifications</h5>
 
             <p class="light">Receive an email notification when speeds drop below a certain threshold, automatically post to Twitter to notify the ISP, or automatically create a support ticket to get attention to the problem fast!</p>
@@ -73,16 +146,32 @@
       </div>
 
     </div>
+
     <br><br>
 
+<div class="row">
+<div class="col s12 center">
+<h1 class="header center orange-text">Your Current Speed</h1>
+<h5 class="header center light">HTML5 Speed Test. No Flash or Java!</h5>
+
+<!--OST Widget code start--><iframe src="http://openspeedtest.com/Get-widget.php" width="735" scrolling="no" height="490" frameborder="0">
+</iframe><br /><div style="text-align:center; width: 725px;"></div><!-- OST Widget code end -->
+</div>
+</div>
+<div class="row">
+<div class="col s12">
 <h1 class="header center orange-text">Business Deluxe 100</h1>
 <h5 class="header center light">Advertised as 100down/20up</h5>
 <div id="dashboard_business">
 <div id="dual_chart_business" style="width: 100%; height: 500px;"></div>
-<div id="range_filter_business" style="width: 100%"></div>
+<div id="range_filter_business" style="width: 100%; z-index=-1"></div>
+</div>
+</div>
+</div>
 <br>
 <br>
 <div class="row">
+
 <div class="col s12 center">
 <a class="twitter-timeline" data-dnt="true" href="https://twitter.com/Comcast219" data-widget-id="728317503655399424">Tweets by @Comcast219</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
@@ -91,11 +180,15 @@
 </div>
 <br>
 <br>
+<div class="row">
+<div class="col s12">
 <h1 class="header center orange-text">Xfinity Blast! 75</h1>
 <h5 class="header center light">Advertised as 75down/10up</h5>
 <div id="dashboard_residential">
 <div id="dual_chart_residential" style="width: 100%; height: 500px;"></div>
-<div id="range_filter_residential" style="width: 100%"></div>
+<div id="range_filter_residential" style="width: 100%; z-index=-1"></div>
+</div>
+</div>
 </div>
 <br>
 <br>
@@ -117,23 +210,23 @@
       <div class="row">
         <div class="col l6 s12">
           <h5 class="white-text">About Speed Monitor</h5>
-          <p class="grey-text text-lighten-4">Speed Monitor is based on the original source code of AlekseyP's Comcast complainer <a href="http://pastebin.com/WMEh802V">http://pastebin.com/WMEh802V</a>, and improved with database storage instead of CSV, Google Charts API display, and email notification triggers.The purpose of Speed Monitor is not just to complain to the ISP, but also to give deeper insight into internet speeds over time.</p>
+          <p class="grey-text text-lighten-4">Speed Monitor is based on the original source code of AlekseyP's Comcast Complainer <a href="http://pastebin.com/WMEh802V">http://pastebin.com/WMEh802V</a>, and improved with database storage, email notification triggers, Google Charts API, and Materialize CSS frontend.The purpose of Speed Monitor is not only to complain to the ISP, but also to give deeper insight into internet speeds over time.</p>
 
 
         </div>
         <div class="col l3 s12">
           <h5 class="white-text">Links</h5>
           <ul>
-            <li><a class="white-text" href="/">Home</a></li>
+            <li><a class="white-text" href="/">rchase.com</a></li>
             <li><a class="white-text" href="sm.php">Speed Monitor</a></li>
           </ul>
         </div>
         <div class="col l3 s12">
           <h5 class="white-text">Connect</h5>
           <ul>
-            <li><a class="white-text" href="http://github.com/reillychase">GitHub</a></li>
-            <li><a class="white-text" href="http://linkedin.com/in/reillychase">LinkedIn</a></li>
-            <li><a class="white-text" href="http://twitter.com/_rchase_">Twitter</a></li>
+            <li><a class="white-text" href="http://github.com/reillychase" target="_blank">GitHub</a></li>
+            <li><a class="white-text" href="http://linkedin.com/in/reillychase" target="_blank">LinkedIn</a></li>
+            <li><a class="white-text" href="http://twitter.com/_rchase_" target="_blank">Twitter</a></li>
 
           </ul>
         </div>
@@ -171,7 +264,7 @@ echo 'Connection failed: ' . $e->getMessage();
 // Get Business Stats
 
 $query = "SELECT * FROM comcast_uptime.business";
-$stmt = $dbh->prepare($query);
+$stmt = $dbh ->prepare($query);
 $stmt->execute();
 
 $result = $stmt->fetchAll();
@@ -183,7 +276,7 @@ foreach( $result as $row ){
     $time_val = $row[1] . ' UTC';
     $time_val = str_replace('-','/',$time_val);
 
-    $business_stats[] = array($time_val, $row[2], $row[3], $row[4]);
+    $business_stats[] = array($time_val, $row[2], $row[3], $row[4], $row[5]);
   }
 
 
@@ -213,7 +306,7 @@ foreach( $result as $row ){
     $time_val = $row[1] . ' UTC';
     $time_val = str_replace('-','/',$time_val);
 
-    $residential_stats[] = array($time_val, $row[2], $row[3], $row[4]);
+    $residential_stats[] = array($time_val, $row[2], $row[3], $row[4], $row[5]);
   }
 
 
@@ -235,14 +328,15 @@ function drawVisualization() {
 // Business Chart
   var data = new google.visualization.DataTable();
 
-  data.addColumn('datetime', 'Time');
+    data.addColumn('datetime', 'Time');
     data.addColumn('number', 'Download');
     data.addColumn('number', 'Upload');
     data.addColumn('number', 'Ping');
+    data.addColumn({'type': 'string', 'role': 'tooltip', 'p': {'html': true}});
 
 
 
-      var business_stats = <?php echo $business_stats ?>;
+  var business_stats = <?php echo $business_stats ?>;
 
 
   for (var i in business_stats) {
@@ -252,9 +346,7 @@ function drawVisualization() {
     business_stats[i][1] = parseFloat(business_stats[i][1]);
     business_stats[i][2] = parseFloat(business_stats[i][2]);
     business_stats[i][3] = parseFloat(business_stats[i][3]);
-
-
-
+    business_stats[i][4] = '<a href="' + business_stats[i][4] + '" target="_blank"><img src="' + business_stats[i][4] + '"></a>';
   }
       data.addRows(business_stats);
     
@@ -263,6 +355,7 @@ function drawVisualization() {
         controlType: 'ChartRangeFilter',
         containerId: 'range_filter_business',
         options: {
+
             filterColumnIndex: 0,
             ui: {
                 chartOptions: {
@@ -294,7 +387,7 @@ function drawVisualization() {
             }
         },
         view: {
-            columns: [0, 1, 2, 3]
+            columns: [0, 1, 2, 3, 4]
         },
         state: {
             range: {
@@ -309,7 +402,9 @@ function drawVisualization() {
         chartType: 'ComboChart',
         containerId: 'dual_chart_business',
         options: {
- 
+          tooltip: {isHtml: true,
+              trigger: 'selection'},
+          focusTarget: 'category',
             // width and chartArea.width should be the same for the filter and chart
             'legend':'top',
             'title':'Actual Speeds',
@@ -358,7 +453,7 @@ function drawVisualization() {
     data.addColumn('number', 'Download');
     data.addColumn('number', 'Upload');
     data.addColumn('number', 'Ping');
-
+    data.addColumn({'type': 'string', 'role': 'tooltip', 'p': {'html': true}});
 
 
       var residential_stats = <?php echo $residential_stats ?>;
@@ -371,6 +466,7 @@ function drawVisualization() {
     residential_stats[i][1] = parseFloat(residential_stats[i][1]);
     residential_stats[i][2] = parseFloat(residential_stats[i][2]);
     residential_stats[i][3] = parseFloat(residential_stats[i][3]);
+    residential_stats[i][4] = '<a href="' + residential_stats[i][4] + '" target="_blank"><img src="' + residential_stats[i][4] + '"></a>';
 
 
 
@@ -382,6 +478,7 @@ function drawVisualization() {
         controlType: 'ChartRangeFilter',
         containerId: 'range_filter_residential',
         options: {
+
             filterColumnIndex: 0,
             ui: {
                 chartOptions: {
@@ -408,7 +505,7 @@ function drawVisualization() {
             }
         },
         view: {
-            columns: [0, 1, 2, 3]
+            columns: [0, 1, 2, 3, 4]
         },
         state: {
             range: {
@@ -423,7 +520,9 @@ function drawVisualization() {
         chartType: 'ComboChart',
         containerId: 'dual_chart_residential',
         options: {
- 
+          tooltip: {isHtml: true,
+              trigger: 'selection'},
+          focusTarget: 'category',
             // width and chartArea.width should be the same for the filter and chart
             height: 500,
             width: '100%',
@@ -443,7 +542,6 @@ function drawVisualization() {
 
 
 
-
             },
             
 
@@ -458,7 +556,6 @@ function drawVisualization() {
     // draw the dashboard
     dash_residential.draw(data);
 }
-
 
   </script>
 
