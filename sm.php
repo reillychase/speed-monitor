@@ -263,7 +263,7 @@ echo 'Connection failed: ' . $e->getMessage();
 
 // Get Business Stats
 
-$query = "SELECT * FROM comcast_uptime.business";
+$query = "SELECT * FROM comcast_uptime.business ORDER BY id";
 $stmt = $dbh ->prepare($query);
 $stmt->execute();
 
@@ -293,7 +293,7 @@ echo 'Connection failed: ' . $e->getMessage();
 }
 
 
-$query = "SELECT * FROM comcast_uptime.residential";
+$query = "SELECT * FROM comcast_uptime.residential ORDER BY id";
 $stmt = $dbh->prepare($query);
 $stmt->execute();
 
@@ -382,7 +382,7 @@ function drawVisualization() {
                         width: '80%'
                     }
                 },
-                minRangeSize: 21600000, // 86400000ms = 1 day
+                minRangeSize: 3600000, // 86400000ms = 1 day
                 snapToData: false
             }
         },
@@ -392,7 +392,7 @@ function drawVisualization() {
         state: {
             range: {
                 // set the starting range to
-                start: new Date(new Date().getTime() - 60 * 60 * 6 * 1000 * 1),
+                start: new Date(new Date().getTime() - 60 * 60 * 1 * 1000 * 1),
                 end: new Date()
             }
         }
@@ -500,7 +500,7 @@ function drawVisualization() {
                         width: '80%'
                     }
                 },
-                minRangeSize: 21600000, // 86400000ms = 1 day
+                minRangeSize: 3600000, // 86400000ms = 1 day
                 snapToData: false
             }
         },
@@ -510,7 +510,7 @@ function drawVisualization() {
         state: {
             range: {
                 // set the starting range to
-                start: new Date(new Date().getTime() - 60 * 60 * 6 * 1000 * 1),
+                start: new Date(new Date().getTime() - 60 * 60 * 1 * 1000 * 1),
                 end: new Date()
             }
         }
