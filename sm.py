@@ -12,9 +12,9 @@ from sm_config import *
 def test():
 
     #run speedtest-cli
-    print 'running test'
+    print 'Running speedtest'
     a = os.popen("python /usr/bin/speedtest-cli --share --simple").read()
-    print 'ran'
+    print 'Done.'
     #split the 3 line result (ping,down,up)
     print a
     #if speedtest could not connect set the speeds to 0
@@ -54,17 +54,17 @@ def test():
     #try to tweet if speedtest couldnt even connect. Probably wont work if the internet is down
     if "Cannot" in a:
         try:
-            tweet="Hey @Comcast @ComcastCares why is my internet down? I pay for 75down/10up in Valparaiso IN? #comcastoutage #comcast"
+            tweet="Hey @Comcast @ComcastCares why is my internet down? I pay for " + down_speed + "down/" + up_speed + "up in Valparaiso IN? #comcastoutage #comcast"
             twit.statuses.update(status=tweet)
         except:
             pass
 
     # tweet if down speed is less than whatever I set
-    elif eval(d)<46:
-        print "trying to tweet"
+    elif eval(d)<down_limit:
+        print "Tweeting..."
         try:
             # i know there must be a better way than to do (str(int(eval())))
-            tweet="Hey @Comcast why is my internet speed " + str(int(eval(d))) + "down/" + str(int(eval(u))) + "up when I pay for 75down/10up in Valparaiso IN? @ComcastCares @xfinity #comcast"                        
+            tweet="Hey @Comcast why is my internet speed " + str(int(eval(d))) + "down/" + str(int(eval(u))) + "up when I pay for " + down_speed + "down/" + up_speed + "up in Valparaiso IN? @ComcastCares @xfinity #comcast"                        
             twit.statuses.update(status=tweet)
         except Exception,e:
             print str(e)
@@ -73,4 +73,4 @@ def test():
         
 if __name__ == '__main__':
         test()
-        print 'completed'
+        print 'Finished.'
