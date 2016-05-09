@@ -5,7 +5,7 @@ See live example at http://rchase.com/sm.php
 
 Speed Monitor tracks internet speeds over time by performing a speed test at set intervals (I use 15 minutes), and displaying the results using Google Charts API. If an internet speed test drops below a predefined threshold, an email is sent to notify the administrator, and a tweet is sent to the ISP. 
 
-# INSTALLATION INSTRUCTIONS
+# Install Instructions
 1. Download using the "Download ZIP" button
 2. Unzip to a web directory
 3. Remove sm.py and sm_config.py from the web directory, move them to any non web directory like ~/scripts
