@@ -19,4 +19,4 @@ You will need to generate Key and Access tokens, then enter them into sm_config.
 
 TIP: Use "~/scripts/sm.py > /dev/null 2>&1" as the location of your Cron Job script to redirect script output to /dev/null (so you won't get email notifications every time it runs)
 
-WARNING: Not recommended for use on a metered internet connection (Satellite/4G/others), uses tons of bandwidth for tests (About 250mb/per test on my 100mbps connection)
+WARNING: Not recommended for use on a metered internet connection (Satellite/4G/others), uses lots of bandwidth for tests (About 250mb/per test on my 100mbps connection)
