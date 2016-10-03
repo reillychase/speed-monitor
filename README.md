@@ -1,8 +1,6 @@
 # Speed Monitor
 An Open Source Internet Speed Analysis Tool
 
-See live example at http://rchase.com/sm.php
-
 Speed Monitor tracks internet speeds over time by performing a speed test at set intervals (for example 15 minutes), and displaying the results using Google Charts API. If an internet speed test drops below a predefined threshold, an email is sent to notify the administrator, and a tweet is sent to the ISP. 
 
 # Install Instructions
